@@ -1,16 +1,16 @@
 extends layout
 
 block content
-  .nav 
-    h1 Club House 
-    a(href='/') Home
-    a(href='/') Messages 
-    a(href='/') Members
-  .header
-    h1=title
-    form(action='' method='POST')
-      label(for='username') Username 
-      input#username(type='text' placeholder='Email/Username' name='username' required='true' value='')
-      label(for='password') Password 
-      input#password(type='password' placeholder='Password' name='password' required='true')
-      button.btn.btn-primary(type='submit') Submit
+  
+  if user
+    h1 Welcome back #{user.name}
+    a(href='/log-out') LOG OUT
+  else 
+    .header
+      h1=title
+      form(action='' method='POST')
+        label(for='username') Username 
+        input#username(type='text' placeholder='Email/Username' name='username' required='true' value='')
+        label(for='password') Password 
+        input#password(type='password' placeholder='Password' name='password' required='true')
+        button.btn.btn-primary(type='submit') Submit
