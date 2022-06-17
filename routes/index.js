@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var user_controller = require('../controllers/userController')
-var auth_controller = require('../controllers/authController')
+var user_controller = require('../controllers/userController');
+var auth_controller = require('../controllers/authController');
 
 /// ----- HOMEPAGE ----- ///
 router.get('/', function (req, res, next) {
@@ -21,19 +21,6 @@ router.get("/log-out", auth_controller.logout_get);
 /// ----- MESSAGE ----- ///
 
 /// ----- ADMIN ----- ///
-
-
-
-router.get('/log-in', function (req, res, next) {
-  res.render('log-in-form', { title: 'Log-in' });
-});
-
-router.post('/log-in', user_controller.user_log_in);
-
-router.get('/home', function (req, res, next) {
-  console.log(req.user);
-  res.render('home');
-});
 
 router.get('/error', function (req, res, next) {
   res.render('error', { title: 'Express' });
