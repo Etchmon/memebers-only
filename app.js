@@ -11,7 +11,6 @@ const LocalStrategy = require("passport-local").Strategy;
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -77,6 +76,7 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
+// Access the user object from anywhere in our application
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   next();

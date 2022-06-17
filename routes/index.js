@@ -1,13 +1,28 @@
 var express = require('express');
 var router = express.Router();
 var user_controller = require('../controllers/userController')
+var auth_controller = require('../controllers/authController')
 
-/* GET home page. */
+/// ----- HOMEPAGE ----- ///
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Sign Up', user: req.user });
 });
 
-router.post('/', user_controller.user_sign_up);
+/// ----- SIGNUP ----- ///
+router.post('/', auth_controller.sign_up);
+
+/// ----- LOGIN/LOGOUT ----- ///
+router.get("/log-in", auth_controller.login_get);
+router.post("/log-in", auth_controller.login_post);
+router.get("/log-out", auth_controller.logout_get);
+
+/// ----- BECOME A MEMBER ----- ///
+
+/// ----- MESSAGE ----- ///
+
+/// ----- ADMIN ----- ///
+
+
 
 router.get('/log-in', function (req, res, next) {
   res.render('log-in-form', { title: 'Log-in' });

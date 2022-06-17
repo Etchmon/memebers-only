@@ -1,16 +1,19 @@
 extends layout
 
 block content
-  
-  if user
-    h1 Welcome back #{user.name}
-    a(href='/log-out') LOG OUT
-  else 
-    .header
-      h1=title
-      form(action='' method='POST')
-        label(for='username') Username 
-        input#username(type='text' placeholder='Email/Username' name='username' required='true' value='')
-        label(for='password') Password 
-        input#password(type='password' placeholder='Password' name='password' required='true')
-        button.btn.btn-primary(type='submit') Submit
+  .header
+    h1=title
+    form(action='' method='POST')
+      label(for='username') Username 
+      input#username(type='text' placeholder='Email/Username' name='username' required='true' value='')
+      if (error)
+        p(style="color: red;") #{error}
+      label(for='password') Password 
+      input#password(type='password' placeholder='Password' name='password' required='true')
+      label(for='confirmPassword') Password 
+      input#confirmPassword(type='confirmPassword' placeholder='Password' name='confirmPassword' required='true')
+      button.btn.btn-primary(type='submit') Submit
+      p already a member?  
+        a(href='/log-in') Log-in
+      if (confirmationError)
+        p(style="color: red;") #{confirmationError}
