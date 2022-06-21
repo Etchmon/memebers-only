@@ -8,6 +8,10 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Sign Up', user: req.user });
 });
 
+router.get('/home', function (req, res, next) {
+  res.render('home', { user: req.user });
+});
+
 /// ----- SIGNUP ----- ///
 router.post('/', auth_controller.sign_up);
 

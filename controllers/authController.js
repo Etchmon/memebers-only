@@ -17,7 +17,7 @@ exports.sign_up = [
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             console.log('ERROR');
-            res.render('error', { confirmationError: 'Passwords must be the same' });
+            res.render('error', { error: errors });
         }
         else {
             // Check db for existing User
@@ -49,6 +49,7 @@ exports.sign_up = [
 
 exports.login_get = (req, res) => {
     // If user is already logged in, redirect them to the homepage
+    if (res.locals.currentUser) return res.redirect("/home");
     res.render("log-in-form", { title: "Login" });
 };
 
@@ -57,7 +58,9 @@ exports.login_post = passport.authenticate("local", {
     failureRedirect: "/log-in"
 });
 
-exports.logout_get = (req, res) => {
-    req.logout();
-    res.redirect("/");
+exports.logout_get = (req, res, next) => {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect("/");
+    });
 };
