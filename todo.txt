@@ -1,0 +1,14 @@
+----- TO DO's -----
+-create message schema
+-load database with fake messages
+-change /home route to show message forum
+-if user is logged in, show join the club button
+-if they answer the secret question correctly, change their user objects member status to true
+-Once a member, give them access to clubhouse forum page.
+-create schema for members only message forum seperate from hompage forum.
+-add create message routes and controller functions
+-only let admin delete or edit messages
+-style and theme the pages
+-add link, description, and image/gif to readme.
+-deploy to heroku
+
