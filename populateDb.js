@@ -46,8 +46,8 @@ function userCreate(username, password, member, admin, cb) {
     });
 }
 
-function messageCreate(title, text, timestamp, cb) {
-    messageDetail = { title: title, text: text, timestamp: timestamp };
+function messageCreate(user, title, text, timestamp, cb) {
+    messageDetail = { user: user, title: title, text: text, timestamp: timestamp };
 
     var message = new Message(messageDetail);
 
@@ -77,10 +77,10 @@ function createUsers(cb) {
 function createMessages(cb) {
     async.series([
         function (callback) {
-            messageCreate("Yooooo! Goodluck Junior's!", "Dream it, Believe it, Achieve it", Date.now(), callback);
+            messageCreate('62b36ffe0615b281dc5ac527', "Yooooo! Goodluck Junior's!", "Dream it, Believe it, Achieve it", Date.now(), callback);
         },
         function (callback) {
-            messageCreate("Look into the bagel", "Everything, Everywhere, All at Once.", Date.now(), callback);
+            messageCreate('62b370000615b281dc5ac52a', "Look into the bagel", "Everything, Everywhere, All at Once.", Date.now(), callback);
         },
     ], cb);
 };
@@ -95,7 +95,7 @@ async.series([
             console.log('FINAL ERR: ' + err);
         }
         else {
-            console.log('Items: ' + items);
+            console.log('Items: ' + messages);
 
         }
         // All done, disconnect from database
