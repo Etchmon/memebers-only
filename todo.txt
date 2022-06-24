@@ -1,6 +1,5 @@
 ----- TO DO's -----
--create message schema
--load database with fake messages
+-get all messages from db on get request for home page and pass it to the view
 -change /home route to show message forum
 -if user is logged in, show join the club button
 -if they answer the secret question correctly, change their user objects member status to true
