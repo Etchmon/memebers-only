@@ -4,12 +4,11 @@ var user_controller = require('../controllers/userController');
 var auth_controller = require('../controllers/authController');
 var index_controller = require('../controllers/indexController');
 
-/// ----- HOMEPAGE ----- ///
+/// ----- INDEX ----- ///
 router.get('/', index_controller.index);
 
-router.get('/home', function (req, res, next) {
-  res.render('home', { user: req.user });
-});
+/// ----- HOMEPAGE ----- ///
+router.get('/home', index_controller.home);
 
 /// ----- SIGNUP ----- ///
 router.post('/', auth_controller.sign_up);

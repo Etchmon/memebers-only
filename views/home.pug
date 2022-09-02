@@ -13,4 +13,12 @@ block content
     h1 Welcome to the Club house #{user.username}
 
   .main
-    //- for each message, create a card and fill it with message info
+   if (messages)
+    div.messages-container
+      each message in messages
+        .msg-container 
+        h1 #{message.title}
+        p #{message.text}
+        p #{message.timestamp}
+        if (user.member == true)
+          h3 #{message.user.username}
