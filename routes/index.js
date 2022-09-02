@@ -2,11 +2,10 @@ var express = require('express');
 var router = express.Router();
 var user_controller = require('../controllers/userController');
 var auth_controller = require('../controllers/authController');
+var index_controller = require('../controllers/indexController');
 
 /// ----- HOMEPAGE ----- ///
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Sign Up', user: req.user });
-});
+router.get('/', index_controller.index);
 
 router.get('/home', function (req, res, next) {
   res.render('home', { user: req.user });
