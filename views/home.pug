@@ -2,12 +2,11 @@ extends layout
 
 block content
   .nav 
-    h1 Club House 
-    a(href='/club') Home
-    a(href='/club/messages') Messages 
-    a(href='//club/members') Members
-    a(href="/log-out") 
-              li Log out 
+    h1 HomePage 
+    a(href='/home') Home
+    a(href="/log-out") Log out 
+    a(href="/create-message") + Create Message
+    a(href='/club-house') Enter Club House
 
   .section 
     h1 Welcome to the Club house #{user.username}
