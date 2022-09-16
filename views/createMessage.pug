@@ -1,6 +1,13 @@
 extends layout
 
 block content
+    .nav 
+      h1 HomePage 
+      a(href='/home') Home
+      a(href="/log-out") Log out 
+      a(href="/create-message") + Create Message
+      a(href='/club-house') Enter Club House
+
     .card 
       h2 Create a message 
       form(action='/log-in' method='POST')
