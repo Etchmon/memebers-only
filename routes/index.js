@@ -23,6 +23,7 @@ router.get("/log-out", auth_controller.logout_get);
 
 /// ----- MESSAGE ----- ///
 router.get("/create-message", message_controller.create_message_get);
+router.post("/create-message", message_controller.create_message_post);
 
 /// ----- ADMIN ----- ///
 
