@@ -14,7 +14,8 @@ block content
       label(for='password') Password 
       input#password(type='password' placeholder='Password' name='password' required='true')
       button(type='submit') Submit
-
+    p Not a member?  
+      a(href='/log-in') Sign up
     if (errors)
       p #{errors}
     

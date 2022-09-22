@@ -12,6 +12,11 @@ exports.index = async (req, res, next) => {
 }
 
 exports.home = async (req, res, next) => {
+    if (!res.locals.currentUser) {
+        // Users not logged in cannot access "create a message page"
+        return res.redirect("/log-in");
+    }
+
     try {
         // Populate messages to be displayed on homepage.
         const messages = await Message.find().populate('user');
