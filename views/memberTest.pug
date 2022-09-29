@@ -1,0 +1,15 @@
+extends layout 
+
+block content
+  .nav 
+    h1 Club House 
+    a(href='/') Home
+    a(href='/') Messages 
+    a(href='/') Members
+  .container
+    h1 Answer the question to become a member of the club 
+    h2 Is "7 + 3" == 10 true or false in Javascript?
+    form
+        input(type="radio" placeholder="true" value="true")
+        input(type="radio" placeholder="false" value="false")
+        button(type="submit") Submit
