@@ -65,3 +65,27 @@ exports.logout_get = (req, res, next) => {
         res.redirect("/");
     });
 };
+
+exports.clubhouse_test = (req, res, next) => {
+    if (!res.locals.currentUser) {
+        // Users not logged in cannot access "create a message page"
+        return res.redirect("/log-in");
+    }
+
+    if (!res.locals.currentUser.member) {
+        res.render("memberTest")
+    } else {
+        res.render("clubhouse");
+    }
+
+    console.log(res.locals.currentUser.member);
+
+}
+
+exports.clubhouse_post = (req, res, next) => {
+    if (!res.locals.currentUser) {
+        // Users not logged in cannot access "create a message page"
+        return res.redirect("/log-in");
+    }
+    console.log(req.body.true);
+}
