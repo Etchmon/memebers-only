@@ -20,8 +20,8 @@ router.post("/log-in", auth_controller.login_post);
 router.get("/log-out", auth_controller.logout_get);
 
 /// ----- BECOME A MEMBER ----- ///
-router.get("/clubhouse", auth_controller.clubhouse_test)
-router.post("/clubhouse", auth_controller.clubhouse_post)
+router.get("/clubhouse", auth_controller.clubhouse_test);
+router.post("/clubhouse", auth_controller.clubhouse_post);
 
 /// ----- MESSAGE ----- ///
 router.get("/create-message", message_controller.create_message_get);

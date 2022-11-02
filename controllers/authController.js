@@ -82,10 +82,27 @@ exports.clubhouse_test = (req, res, next) => {
 
 }
 
-exports.clubhouse_post = (req, res, next) => {
-    if (!res.locals.currentUser) {
-        // Users not logged in cannot access "create a message page"
-        return res.redirect("/log-in");
+exports.clubhouse_post = [
+    // santize data
+    body("answer").trim().isLength({ min: 1 }).withMessage("Answer must not be empty"),
+
+    // Process request after validation and sanitization
+    (req, res, next) => {
+        // Extract validation errors from request.
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.render('error', { error: errors })
+        } else if (req.body.answer != 'curiosity') {
+            res.render('memberTest', { answerError: 'Wrong answer' })
+        };
+
+        const user = new User(res.locals.currentUser);
+        user.member = true;
+
+        User.findByIdAndUpdate(res.locals.currentUser._id, user, {}, (err) => {
+            if (err) return next(err);
+            return res.render('clubhouse');
+        })
     }
-    console.log(req.body.true);
-}
+]
+

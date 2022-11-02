@@ -8,10 +8,8 @@ block content
     a(href='/') Members
   .container
     h1 Answer the question to become a member of the club 
-    h2 Is "7 + 3" == 10 true or false in Javascript?
+    h2 What was the name of the first rover on Mars?
     form(action='/clubhouse' method='POST')
-        label(for="true") True
-        input(type="radio" placeholder="true" value="true" name="true")
-        label(for="false") False
-        input(type="radio" placeholder="false" value="false" name="false")
+        label(for="answer") Yes
+        input(type='text' placeholder='Answer' name='answer' for='answer' required='true')
         button(type="submit") Submit
