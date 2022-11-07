@@ -10,6 +10,7 @@ block content
     h1 Answer the question to become a member of the club 
     h2 What was the name of the first rover on Mars?
     form(action='/clubhouse' method='POST')
-        label(for="answer") Yes
+        if(answerError)
+          h3 #{answerError}
         input(type='text' placeholder='Answer' name='answer' for='answer' required='true')
         button(type="submit") Submit

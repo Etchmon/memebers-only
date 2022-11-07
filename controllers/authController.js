@@ -93,7 +93,7 @@ exports.clubhouse_post = [
         if (!errors.isEmpty()) {
             res.render('error', { error: errors })
         } else if (req.body.answer != 'curiosity') {
-            res.render('memberTest', { answerError: 'Wrong answer' })
+            return res.render('memberTest', { answerError: 'Wrong answer' })
         };
 
         const user = new User(res.locals.currentUser);
