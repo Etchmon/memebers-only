@@ -3,8 +3,18 @@ extends layout
 block content
   .nav 
     h1 Club House 
-    a(href='/') Home
-    a(href='/') Messages 
-    a(href='/') Members
+    a(href='/home') Home
+    a(href="/log-out") Log out 
+    a(href="/create-message") + Create Message
   .container
     h1 Welcome to the Clubhouse!
+  .main
+    if (messages)
+      div.messages-container
+        each message in messages
+          .msg-container 
+          h1 #{message.title}
+          p #{message.text}
+          p #{message.timestamp}
+          if (user.member == true)
+            h3 #{message.user.username}

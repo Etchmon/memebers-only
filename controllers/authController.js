@@ -66,7 +66,7 @@ exports.logout_get = (req, res, next) => {
     });
 };
 
-exports.clubhouse_test = (req, res, next) => {
+exports.clubhouse_test = async (req, res, next) => {
     if (!res.locals.currentUser) {
         // Users not logged in cannot access "create a message page"
         return res.redirect("/log-in");
@@ -75,10 +75,10 @@ exports.clubhouse_test = (req, res, next) => {
     if (!res.locals.currentUser.member) {
         res.render("memberTest")
     } else {
-        res.render("clubhouse");
-    }
+        const messages = await Message.find().populate('user');
 
-    console.log(res.locals.currentUser.member);
+        res.render("clubhouse", { user: req.user, messages: messages });
+    }
 
 }
 
@@ -101,7 +101,7 @@ exports.clubhouse_post = [
 
         User.findByIdAndUpdate(res.locals.currentUser._id, user, {}, (err) => {
             if (err) return next(err);
-            return res.render('clubhouse');
+            return res.render('home', { user: req.user });
         })
     }
 ]
