@@ -6,15 +6,15 @@ block content
     a(href='/home') Home
     a(href="/log-out") Log out 
     a(href="/create-message") + Create Message
-  .container
+  .header
     h1 Welcome to the Clubhouse!
   .main
     if (messages)
-      div.messages-container
+      div.container
         each message in messages
-          .msg-container 
-          h1 #{message.title}
-          p #{message.text}
-          p #{message.timestamp}
-          if (user.member == true)
-            h3 #{message.user.username}
+          .msg-card 
+            h1 #{message.title}
+            p #{message.text}
+            p #{message.timestamp}
+            if (user.member == true)
+              h3 #{message.user.username}

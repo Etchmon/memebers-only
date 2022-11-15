@@ -8,16 +8,16 @@ block content
     a(href="/create-message") + Create Message
     a(href='/clubhouse') Enter Club House
 
-  .section 
+  .header
     h1 Welcome to the Club house #{user.username}
 
   .main
    if (messages)
-    div.messages-container
+    .container
       each message in messages
-        .msg-container 
-        h1 #{message.title}
-        p #{message.text}
-        p #{message.timestamp}
-        if (user.member == true)
-          h3 Anonymous
+        .msg-card 
+          h1 #{message.title}
+          p #{message.text}
+          p #{message.timestamp}
+          if (user.member == true)
+            h3 Anonymous
